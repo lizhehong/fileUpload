@@ -112,6 +112,9 @@ public class ImageController {
             
             File newFile = new File(storageDirectory + "/" + newFilename);
             try {
+            	if(!newFile.isFile()){
+                	newFile.createNewFile();
+                }
                 mpf.transferTo(newFile);
                 
                 BufferedImage thumbnail = Scalr.resize(ImageIO.read(newFile), 290);
